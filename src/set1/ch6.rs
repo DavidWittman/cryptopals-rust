@@ -173,10 +173,7 @@ fn break_repeating_key_xor(cipher: Vec<u8>) -> (Vec<u8>, String) {
 #[test]
 fn test_break_repeating_key_xor() {
     let data = read_file_base64(String::from("./src/set1/testdata/6.txt")).unwrap();
-
-    let expected_key = vec![84, 101, 114, 109, 105, 110, 97, 116, 111, 114, 32, 88, 58, 32, 66, 114, 105, 110, 103, 32, 116, 104, 101, 32, 110, 111, 105, 115, 101];
-
     let (key, plaintext) = break_repeating_key_xor(data);
-    assert_eq!(key, expected_key);
+    assert_eq!(key,  "Terminator X: Bring the noise".as_bytes().to_vec());
     assert_eq!(plaintext, constants::PLAY_THAT_FUNKY_MUSIC.to_string());
 }
